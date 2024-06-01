@@ -27,3 +27,24 @@ export const newUserRegister = async (body) => {
     return data;
 };
 
+export const login = async(body)=>{
+    let userObj = await User.findOne({email:body.email})
+    if(userObj===null){
+      throw new Error('Invalid Email')
+    }
+     const result = await new Promise((resolve, reject) => {
+        bcrypt.compare(body.password, userObj.password, (err, res) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      });
+    if(result){
+      return userObj;
+    }else{
+      throw new Error('Invalid password')
+    }
+  };
+  

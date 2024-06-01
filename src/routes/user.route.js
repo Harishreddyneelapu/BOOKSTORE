@@ -10,5 +10,7 @@ router.post('/userRegister', validator.newUserValidatorRegister, userController.
 
 router.post('/adminRegister', validator.newAdminValidatorRegister, userController.newAdminRegister);
 
+router.post('/login', validator.login, userController.login);
+
 
 export default router;
