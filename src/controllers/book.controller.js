@@ -37,20 +37,14 @@ export const getBookById = async (req, res, next) => {
 
 export const updateBookById = async (req, res, next) => {
     try {
-        if (res.userRole === 'admin') {
-            const data = await BooksService.updateBookById(req.params._id, req.body);
-            res.status(HttpStatus.OK).json({
-                code: HttpStatus.OK,
-                success: true,
-                message: 'Book updated successfully',
-                data: data
-            });
-        } else {
-            res.status(HttpStatus.UNAUTHORIZED).json({
-                success: false,
-                message: `${error}`
-            })
-        }
+        const data = await BooksService.updateBookById(req.params._id, req.body);
+        res.status(HttpStatus.OK).json({
+            code: HttpStatus.OK,
+            success: true,
+            message: 'Book updated successfully',
+            data: data
+        });
+
     } catch (error) {
         res.status(HttpStatus.BAD_REQUEST).json({
             success: false,
@@ -59,22 +53,15 @@ export const updateBookById = async (req, res, next) => {
     }
 }
 
-export const deleteBookById = async (req,res,next)=>{
+export const deleteBookById = async (req, res, next) => {
     try {
-        if (res.userRole === 'admin') {
-            const data = await BooksService.deleteBookById(req.params._id);
-            res.status(HttpStatus.OK).json({
-                code: HttpStatus.OK,
-                success: true,
-                message: 'Book deleted successfully',
-                data: data
-            });
-        } else {
-            res.status(HttpStatus.UNAUTHORIZED).json({
-                success: false,
-                message: `${error}`
-            })
-        }
+        const data = await BooksService.deleteBookById(req.params._id);
+        res.status(HttpStatus.OK).json({
+            code: HttpStatus.OK,
+            success: true,
+            message: 'Book deleted successfully'
+        });
+
     } catch (error) {
         res.status(HttpStatus.BAD_REQUEST).json({
             success: false,

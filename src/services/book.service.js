@@ -1,4 +1,5 @@
 import Book from "../models/book.model";
+import User from "../models/user.model";
 
 export const getAllBooks = async () => {
     const data = await Book.find();

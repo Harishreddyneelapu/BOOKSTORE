@@ -26,8 +26,19 @@ export const userAuth = async (req, res, next) => {
     next();
   } catch (error) {
     res.status(HttpStatus.BAD_REQUEST).json({
-      success:false,
-      message:`${error}`
+      success: false,
+      message: `${error}`
     })
   }
 };
+
+export const checkRole = async (req, res, next) => {
+  if (res.userRole === 'admin') {
+    next();
+  } else {
+    res.status(HttpStatus.UNAUTHORIZED).json({
+      success: false,
+      message: `${error}`
+    })
+  }
+}
