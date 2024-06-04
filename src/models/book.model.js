@@ -15,8 +15,7 @@ const bookSchema = new Schema(
       default: null,
     },
     admin_user_id: {
-      type: Schema.Types.ObjectId,
-    //   ref: 'User',
+      type: String,
     },
     bookName: {
       type: String,
