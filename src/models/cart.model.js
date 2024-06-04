@@ -26,8 +26,7 @@ const cartSchema = new Schema({
                 type:Number
             },
             discountPrice: {
-                type: Number,
-                required: true,
+                type: Number
             },
             quantity: {
                 type: Number,
