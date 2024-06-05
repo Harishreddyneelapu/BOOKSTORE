@@ -19,3 +19,19 @@ export const getWishlistDetails = async (req, res, next) => {
         });
     }
 }
+
+export const addToWishlist = async (req,res,next)=>{
+    try{
+        const data = await WishlistService.addToWishlist(res.userId, req.params._id);
+        res.status(HttpStatus.OK).json({
+            success:true,
+            message: "Book added to wishlist successfully",
+            data:data
+        })
+    }catch(error){
+        res.status(HttpStatus.BAD_REQUEST).json({
+            success:false,
+            message:`${error}`
+        })
+    }
+}

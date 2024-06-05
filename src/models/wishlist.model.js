@@ -27,10 +27,6 @@ const wishlistSchema = new Schema({
             },
             discountPrice: {
                 type: Number
-            },
-            quantity: {
-                type: Number,
-                default: 1
             }
         }
     ]

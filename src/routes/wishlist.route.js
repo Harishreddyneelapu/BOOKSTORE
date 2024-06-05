@@ -7,4 +7,8 @@ const router = express.Router();
 
 router.get('',userAuth, WishlistController.getWishlistDetails);
 
+router.post('/add/:_id',userAuth,WishlistController.addToWishlist);
+
+// router.post('/remove/:_id',userAuth,WishlistController.removeFromWishlist);
+
 export default router;
