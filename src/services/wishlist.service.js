@@ -29,3 +29,20 @@ export const addToWishlist = async (wishlistBy, book_id) => {
         throw new Error("Book not found with this _id");
     }
 }
+
+
+export const removeFromWishlist = async (wishlistBy, book_id) => {
+    const wishlist = await Wishlist.findOne({ wishlistBy: wishlistBy });
+    if (wishlist !== null) {
+        const bookIndex = wishlist.books.findIndex((book) => book._id.equals(book_id));
+        if (bookIndex !== -1) {
+            wishlist.books.splice(bookIndex, 1);
+            await wishlist.save();
+            return wishlist;
+        } else {
+            throw new Error("Book is not in the wishlist");
+        }
+    } else {
+        throw new Error("Wishlist is not created yet");
+    }
+}
