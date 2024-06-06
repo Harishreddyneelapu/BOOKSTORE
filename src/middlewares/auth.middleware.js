@@ -22,13 +22,13 @@ export const userAuth = async (req, res, next) => {
 
     const user = await jwt.verify(bearerToken, process.env.SECRET_KEY);
     res.userId = user._id;
-    res.userRole = user.role
+    res.userRole = user.role;
     next();
   } catch (error) {
     res.status(HttpStatus.BAD_REQUEST).json({
       success: false,
       message: `${error}`
-    })
+    });
   }
 };
 
@@ -39,6 +39,6 @@ export const checkRole = async (req, res, next) => {
     res.status(HttpStatus.UNAUTHORIZED).json({
       success: false,
       message: `${error}`
-    })
+    });
   }
-}
+};
