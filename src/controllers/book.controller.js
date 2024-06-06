@@ -4,7 +4,6 @@ import * as BooksService from "../services/book.service"
 export const getAllbooks = async (req, res, next) => {
     try {
         const data = await BooksService.getAllBooks();
-        console.log(data);
         res.status(HttpStatus.OK).json({
             success: true,
             message: 'All Book fetched Successfully',
