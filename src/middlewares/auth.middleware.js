@@ -38,7 +38,7 @@ export const checkRole = async (req, res, next) => {
   } else {
     res.status(HttpStatus.UNAUTHORIZED).json({
       success: false,
-      message: `${error}`
+      message: 'UNAUTHORIZED'
     });
   }
 };
