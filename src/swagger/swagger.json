@@ -26,6 +26,10 @@
         {
             "name": "Wishlist",
             "description": "Wishlist operations"
+        },
+        {
+            "name": "OrderDetails",
+            "description": "All orders"
         }
     ],
     "paths": {
@@ -510,6 +514,39 @@
                     }
                 }
             }
+        },
+        "/order": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "description": "Get order details.",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Order details fetched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderDetails"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {}
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -681,6 +718,55 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "OrderDetails": {
+                "type": "object",
+                "properties": {
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "books": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "bookId": {
+                                    "type": "string"
+                                },
+                                "bookName": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "author": {
+                                    "type": "string"
+                                },
+                                "bookImage": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "discountPrice": {
+                                    "type": "number"
+                                },
+                                "quantity": {
+                                    "type": "number",
+                                    "default": 1
+                                }
+                            }
+                        }
+                    },
+                    "isPurchased": {
+                        "type": "boolean"
+                    },
+                    "orderPlacedDate": {
+                        "type": "string",
+                        "format": "date-time"
                     }
                 }
             }

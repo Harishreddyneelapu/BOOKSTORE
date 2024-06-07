@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
-const cartSchema = new Schema({
-  cartBy: {
+const orderSchema = new Schema({
+  orderBy: {
     type: String
   },
   books: [
@@ -34,13 +34,14 @@ const cartSchema = new Schema({
       }
     }
   ],
-  cartTotal: {
-    type: Number
-  },
   isPurchased: {
     type: Boolean,
     default: false
+  },
+  orderPlacedDate: {
+    type: Date,
+    default: Date.now
   }
 });
 
-export default model('Cart', cartSchema);
+export default model('Order', orderSchema);

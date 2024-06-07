@@ -4,38 +4,38 @@ const bookSchema = new Schema(
   {
     description: {
       type: String,
-      required: true,
+      required: true
     },
     discountPrice: {
       type: Number,
-      required: true,
+      required: true
     },
     bookImage: {
       type: String,
-      default: null,
+      default: null
     },
     admin_user_id: {
-      type: String,
+      type: String
     },
     bookName: {
       type: String,
-      required: true,
+      required: true
     },
     author: {
       type: String,
-      required: true,
+      required: true
     },
     quantity: {
       type: Number,
-      required: true,
+      required: true
     },
     price: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
   {
-    timestamps: true, 
+    timestamps: true
   }
 );
 
