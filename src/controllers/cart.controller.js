@@ -3,7 +3,7 @@ import * as CartService from '../services/cart.service';
 
 export const getCartDetails = async (req, res) => {
   try {
-    const data = await CartService.getCartDetails(res.userId);
+    const data = await CartService.getCartDetails(req.userId);
     res.status(HttpStatus.OK).json({
       code: HttpStatus.OK,
       success: true,
@@ -21,7 +21,7 @@ export const getCartDetails = async (req, res) => {
 
 export const addToCart = async (req, res) => {
   try {
-    const data = await CartService.addToCart(res.userId, req.params._id);
+    const data = await CartService.addToCart(req.userId, req.params._id);
     res.status(HttpStatus.OK).json({
       success: true,
       message: 'Book added to cart successfully',
@@ -37,7 +37,7 @@ export const addToCart = async (req, res) => {
 
 export const removeFromCart = async (req, res) => {
   try {
-    const data = await CartService.removeFromCart(res.userId, req.params._id);
+    const data = await CartService.removeFromCart(req.userId, req.params._id);
     res.status(HttpStatus.OK).json({
       success: true,
       message: 'book removed from cart successfully',

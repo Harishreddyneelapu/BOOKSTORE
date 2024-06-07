@@ -21,8 +21,8 @@ export const userAuth = async (req, res, next) => {
     bearerToken = bearerToken.split(' ')[1];
 
     const user = await jwt.verify(bearerToken, process.env.SECRET_KEY);
-    res.userId = user._id;
-    res.userRole = user.role;
+    req.userId = user._id;
+    req.userRole = user.role;
     next();
   } catch (error) {
     res.status(HttpStatus.BAD_REQUEST).json({
