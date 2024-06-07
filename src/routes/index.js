@@ -10,6 +10,8 @@ import cartRoute from './cart.route';
 import wishlistRoute from './wishlist.route';
 
 import orderRoute from './order.route';
+
+import customerRouter from './customerDetails.route'
 /**
  * Function contains Application routes
  *
@@ -28,6 +30,8 @@ const routes = () => {
   router.use('/wishlist', wishlistRoute);
 
   router.use('/order', orderRoute);
+
+  router.use('/customer', customerRouter)
 
   return router;
 };
