@@ -3,7 +3,7 @@ import * as WishlistService from '../services/wishlist.service';
 
 export const getWishlistDetails = async (req, res) => {
   try {
-    const data = await WishlistService.getWishlistDetails(res.userId);
+    const data = await WishlistService.getWishlistDetails(req.userId);
     res.status(HttpStatus.OK).json({
       code: HttpStatus.OK,
       success: true,
@@ -22,7 +22,7 @@ export const getWishlistDetails = async (req, res) => {
 export const addToWishlist = async (req, res) => {
   try {
     const data = await WishlistService.addToWishlist(
-      res.userId,
+      req.userId,
       req.params._id
     );
     res.status(HttpStatus.OK).json({
@@ -41,7 +41,7 @@ export const addToWishlist = async (req, res) => {
 export const removeFromWishlist = async (req, res) => {
   try {
     const data = await WishlistService.removeFromWishlist(
-      res.userId,
+      req.userId,
       req.params._id
     );
     res.status(HttpStatus.OK).json({
